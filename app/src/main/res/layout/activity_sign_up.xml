@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_sign_up"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/signup_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="53dp"
+        android:layout_marginLeft="49dp"
+        android:layout_marginRight="49dp"
+        android:background="@android:color/transparent"
+        android:cursorVisible="true"
+        android:ems="10"
+        android:hint="비밀번호를 입력하세요"
+        android:inputType="textPassword"
+        android:paddingLeft="90dp"
+        android:textSize="12sp" />
+
+    <EditText
+        android:id="@+id/signup_passwordconfirm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="49dp"
+        android:layout_marginRight="49dp"
+        android:layout_marginTop="32dp"
+        android:background="@android:color/transparent"
+        android:cursorVisible="true"
+        android:ems="10"
+        android:hint="비밀번호를 확인하세요"
+        android:inputType="textPassword"
+        android:paddingLeft="90dp"
+        android:textSize="12sp" />
+
+    <Button
+        android:id="@+id/signup_send"
+        android:layout_width="110dp"
+        android:layout_height="35dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="130dp"
+        android:background="@android:color/transparent"
+        android:minHeight="33dp" />
+
+    <EditText
+        android:id="@+id/signup_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="138dp"
+        android:layout_marginLeft="49dp"
+        android:layout_marginRight="49dp"
+        android:background="@android:color/transparent"
+        android:cursorVisible="true"
+        android:ems="10"
+        android:hint="이메일을 입력하세요"
+        android:inputType="textEmailAddress"
+        android:paddingLeft="90dp"
+        android:textSize="12sp" />
+
+</android.support.design.widget.CoordinatorLayout>

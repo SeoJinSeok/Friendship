@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_moim_info"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.friendship.activities.MoimInfo">
+
+    <ImageView
+        android:id="@+id/minfo_top"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:srcCompat="@color/bright_blue" />
+
+    <ImageView
+        android:id="@+id/minfo_backimg"
+        android:layout_width="match_parent"
+        android:layout_height="210dp" />
+
+    <Button
+        android:id="@+id/minfo_back"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/back" />
+
+    <TextView
+        android:id="@+id/minfo_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/minfo_backimg"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/minfo_back"
+        android:layout_toRightOf="@+id/minfo_back"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/minfo_alarm"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="315dp"
+        android:background="@drawable/main_side" />
+
+    <Button
+        android:id="@+id/minfo_msetting"
+        android:layout_width="70dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="280dp"
+        android:layout_marginTop="160dp"
+        android:background="@android:color/transparent"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/minfo_title2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="15dp"
+        android:textColor="@android:color/white"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/minfo_content"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:layout_below="@+id/minfo_title"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:scrollIndicators="right"
+        android:scrollbarSize="5dp"
+        android:scrollbars="vertical"
+        android:textAlignment="center"
+        android:textColor="@android:color/black" />
+
+    <Button
+        android:id="@+id/minfo_join"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="25dp"
+        android:background="@android:color/transparent" />
+
+    <android.support.design.widget.CoordinatorLayout
+        android:id="@+id/minfo_mymoim"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
+
+        <LinearLayout
+            android:id="@+id/minfo_menu"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="50dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/minfo_main"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/minfo_chat"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/minfo_album"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/minfo_member"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textAlignment="center" />
+        </LinearLayout>
+
+        <android.support.design.widget.CoordinatorLayout
+            android:id="@+id/minfo_frag"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="80dp">
+
+        </android.support.design.widget.CoordinatorLayout>
+
+    </android.support.design.widget.CoordinatorLayout>
+
+</RelativeLayout>

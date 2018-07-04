@@ -1,0 +1,31 @@
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_imoim_chat"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.friendship.Fragments.imoim_chat">
+
+    <ListView
+        android:id="@+id/imoim_chatlist"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="30dp"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="-20dp"
+        android:scrollbars="vertical" />
+
+    <EditText
+        android:id="@+id/imoim_chat"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="bottom"
+        android:ems="30"
+        android:inputType="textPersonName"
+        android:paddingLeft="20dp" />
+
+    <Button
+        android:id="@+id/imoim_sendchat"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:layout_gravity="bottom|right" />
+</android.support.design.widget.CoordinatorLayout>

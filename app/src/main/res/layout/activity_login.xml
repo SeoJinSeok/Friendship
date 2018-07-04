@@ -1,0 +1,92 @@
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Activities.LoginActivity">
+
+    <!-- Login progress -->
+    <android.support.design.widget.CoordinatorLayout
+        android:id="@+id/login_form"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <AutoCompleteTextView
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="85dp"
+            android:layout_marginLeft="45dp"
+            android:layout_marginRight="45dp"
+            android:background="@android:color/transparent"
+            android:cursorVisible="true"
+            android:dropDownSelector="@android:color/transparent"
+            android:hint="@string/prompt_email"
+            android:inputType="textEmailAddress"
+            android:maxLines="1"
+            android:paddingBottom="5dp"
+            android:paddingLeft="85dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium.Inverse"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/Signup"
+            android:layout_width="120dp"
+            android:layout_height="25dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="135dp"
+            android:layout_marginTop="75dp"
+            android:background="@android:color/transparent" />
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="45dp"
+            android:layout_marginRight="45dp"
+            android:background="@android:color/transparent"
+            android:cursorVisible="true"
+            android:hint="@string/prompt_password"
+            android:imeActionId="6"
+            android:imeActionLabel="@string/action_sign_in_short"
+            android:imeOptions="actionUnspecified"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:paddingBottom="5dp"
+            android:paddingLeft="85dp"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/lossaccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="130dp"
+            android:layout_marginTop="140dp"
+            android:background="@android:color/transparent"
+            android:minHeight="25dp"
+            android:minWidth="0dp"
+            android:text="아이디/비밀번호 찾기" />
+
+        <Button
+            android:id="@+id/email_sign_in_button"
+            android:layout_width="120dp"
+            android:layout_height="25dp"
+            android:layout_gravity="center"
+            android:layout_marginRight="110dp"
+            android:layout_marginTop="75dp"
+            android:background="@android:color/transparent"
+            android:textStyle="bold" />
+    </android.support.design.widget.CoordinatorLayout>
+
+    <ProgressBar
+        android:id="@+id/login_progress"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center"
+        android:visibility="invisible" />
+
+</android.support.design.widget.CoordinatorLayout>

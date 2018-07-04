@@ -1,0 +1,160 @@
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_malarm"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.friendship.Fragments.AlarmSetting">
+
+    <ImageView
+        android:id="@+id/malarm_top"
+        android:layout_width="match_parent"
+        android:layout_height="30dp" />
+
+    <android.support.design.widget.CoordinatorLayout
+        android:id="@+id/malarm_sailor"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:layout_marginTop="70dp">
+
+        <TextView
+            android:id="@+id/malarm_moim"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="15dp"
+            android:text="모임 공지 알림 설정"
+            android:textColor="@android:color/black"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/malarm_moimon"
+            android:layout_width="70dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="200dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/box"
+            android:text="@string/alarm_on" />
+
+        <Button
+            android:id="@+id/malarm_moimoff"
+            android:layout_width="70dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="270dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/box"
+            android:text="@string/alarm_off" />
+
+        <TextView
+            android:id="@+id/malarm_chat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="55dp"
+            android:text="모임 대화방 알림 설정"
+            android:textColor="@android:color/black"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/malarm_chaton"
+            android:layout_width="70dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="200dp"
+            android:layout_marginTop="45dp"
+            android:background="@drawable/box"
+            android:text="@string/alarm_on" />
+
+        <Button
+            android:id="@+id/malarm_chatoff"
+            android:layout_width="70dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="270dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="45dp"
+            android:background="@drawable/box"
+            android:text="@string/alarm_off" />
+
+        <TextView
+            android:id="@+id/malarm_album"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="95dp"
+            android:text="@string/selectAalarm"
+            android:textColor="@color/bright_blue"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/malarm_albumon"
+            android:layout_width="70dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="200dp"
+            android:layout_marginRight="90dp"
+            android:layout_marginTop="85dp"
+            android:background="@drawable/box"
+            android:text="@string/alarm_on" />
+
+        <Button
+            android:id="@+id/malarm_albumoff"
+            android:layout_width="70dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="270dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="85dp"
+            android:background="@drawable/box"
+            android:text="@string/alarm_off" />
+
+        <TextView
+            android:id="@+id/malarm_mem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="140dp"
+            android:text="선원 가입 알림 설정"
+            android:textColor="@android:color/black"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/malarm_memon"
+            android:layout_width="70dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="200dp"
+            android:layout_marginRight="90dp"
+            android:layout_marginTop="130dp"
+            android:background="@drawable/box"
+            android:text="@string/alarm_on" />
+
+        <Button
+            android:id="@+id/malarm_memoff"
+            android:layout_width="70dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="270dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="130dp"
+            android:background="@drawable/box"
+            android:text="@string/alarm_off" />
+
+    </android.support.design.widget.CoordinatorLayout>
+
+    <Button
+        android:id="@+id/malarm_outordel"
+        android:layout_width="150dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="10dp"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/malarm_img"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="40dp" />
+
+    <ImageButton
+        android:id="@+id/malarm_back"
+        android:layout_width="30dp"
+        android:layout_height="30dp" />
+
+</android.support.design.widget.CoordinatorLayout>

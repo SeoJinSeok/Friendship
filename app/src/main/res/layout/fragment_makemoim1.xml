@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_makemoim1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="35dp"
+    tools:context="com.friendship.Fragments.makemoim1">
+
+    <ImageView
+        android:id="@+id/makemoim1_cateimg"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="12dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp" />
+
+    <TextView
+        android:id="@+id/makemoim1_catetitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/makemoim1_cateimg"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="2dp"
+        android:layout_toEndOf="@+id/makemoim1_cateimg"
+        android:layout_toRightOf="@+id/makemoim1_cateimg"
+        android:textColor="@color/bright_blue"
+        android:textSize="12sp" />
+
+    <ImageButton
+        android:id="@+id/makemoim1_category"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_below="@+id/makemoim1_catetitle"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="14dp"
+        android:background="@android:color/transparent" />
+
+    <TextView
+        android:id="@+id/makemoim1_categoryname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/makemoim1_category"
+        android:layout_centerHorizontal="true"
+        android:textColor="@android:color/black"
+        android:textSize="9sp" />
+
+    <ImageView
+        android:id="@+id/makemoim1_regimg"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignLeft="@+id/makemoim1_ageimg"
+        android:layout_alignStart="@+id/makemoim1_ageimg"
+        android:layout_below="@+id/makemoim1_categoryname"
+        android:layout_marginTop="14dp" />
+
+    <TextView
+        android:id="@+id/makemoim1_regtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/makemoim1_regimg"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="2dp"
+        android:layout_toEndOf="@+id/makemoim1_regimg"
+        android:layout_toRightOf="@+id/makemoim1_regimg"
+        android:textColor="@android:color/black"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/makemoim1_state"
+        android:layout_width="160dp"
+        android:layout_height="20dp"
+        android:layout_below="@+id/makemoim1_regimg"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="31dp"
+        android:layout_toLeftOf="@+id/makemoim1_categoryname"
+        android:layout_toStartOf="@+id/makemoim1_categoryname"
+        android:background="@android:color/transparent"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/makemoim1_city"
+        android:layout_width="160dp"
+        android:layout_height="20dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/makemoim1_state"
+        android:layout_marginEnd="12dp"
+        android:layout_marginRight="12dp"
+        android:background="@android:color/transparent"
+        android:textAlignment="center"
+        android:textColor="@android:color/white" />
+
+    <ImageView
+        android:id="@+id/makemoim1_ageimg"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignLeft="@+id/makemoim1_cateimg"
+        android:layout_alignStart="@+id/makemoim1_cateimg"
+        android:layout_below="@+id/makemoim1_state"
+        android:layout_marginTop="40dp" />
+
+    <TextView
+        android:id="@+id/makemoim1_agetitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/makemoim1_ageimg"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="2dp"
+        android:layout_toEndOf="@+id/makemoim1_ageimg"
+        android:layout_toRightOf="@+id/makemoim1_ageimg"
+        android:textColor="@android:color/black"
+        android:textSize="12sp" />
+
+    <EditText
+        android:id="@+id/makemoim1_agelow"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:layout_below="@+id/makemoim1_agetitle"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_toLeftOf="@+id/makemoim1_ageto"
+        android:layout_toStartOf="@+id/makemoim1_ageto"
+        android:background="@android:color/transparent"
+        android:inputType="number"
+        android:textAlignment="center"
+        android:textColor="@android:color/background_light" />
+
+    <ImageView
+        android:id="@+id/makemoim1_ageto"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_alignTop="@+id/makemoim1_agelow"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:id="@+id/makemoim1_agehigh"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:layout_alignTop="@+id/makemoim1_ageto"
+        android:layout_marginLeft="11dp"
+        android:layout_marginStart="11dp"
+        android:layout_toEndOf="@+id/makemoim1_ageto"
+        android:layout_toRightOf="@+id/makemoim1_ageto"
+        android:background="@android:color/transparent"
+        android:inputType="number"
+        android:textAlignment="center"
+        android:textColor="@android:color/background_light" />
+
+    <ImageView
+        android:id="@+id/makemoim1_limitimg"
+        android:layout_width="50dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/makemoim1_agelow"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="21dp" />
+
+    <EditText
+        android:id="@+id/makemoim1_limit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/makemoim1_limitimg"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/transparent"
+        android:ems="3"
+        android:hint="10"
+        android:inputType="number"
+        android:textAlignment="center"
+        android:textColor="@color/bright_blue"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/makemoim1_limittitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/makemoim1_limit"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="2dp"
+        android:textColor="@android:color/black"
+        android:textSize="12sp" />
+
+</RelativeLayout>

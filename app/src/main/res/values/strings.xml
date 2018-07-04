@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">FriendShip</string>
+    <!-- 로그인 부분 -->
+    <string name="prompt_email">이메일</string>
+    <string name="prompt_password">비밀번호</string>
+    <string name="action_sign_in">로그인</string>
+    <string name="action_sign_in_short">로그인</string>
+    <string name="action_register">회원가입</string>
+    <string name="error_invalid_email">없는 이메일입니다.</string>
+    <string name="error_invalid_password">비밀번호를 입력하세요.</string>
+    <string name="error_incorrect_password">비밀번호가 틀립니다.</string>
+    <string name="error_field_required">이 부분을 입력하셔야 합니다.</string>
+
+    <!-- 모임 부분 -->
+    <string name="minfo_main">NOTICE</string>
+    <string name="minfo_chat">CHAT</string>
+    <string name="minfo_album">ALBUM</string>
+    <string name="minfo_member">SAILOR</string>
+    <string name="moim_content">모임 소개를 해주세요(최대 200자)</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+
+    <string name="selectreg">지역 선택</string>
+    <string name="selectAalarm">모임 앨범 알림 설정</string>
+
+    <string name="alarm_on">ON</string>
+    <string name="alarm_off">OFF</string>
+
+    <string name="setcap">선장 임명</string>
+    <string name="setscap">부선장 임명</string>
+    <string name="outsailor">하선 시키기</string>
+    <string name="title_activity_login2">Sign in</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+
+</resources>

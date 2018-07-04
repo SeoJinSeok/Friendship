@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_ochat"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/ochat_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="65dp"
+        android:layout_marginTop="15dp"
+        android:layout_toEndOf="@+id/ochat_icon"
+        android:layout_toRightOf="@+id/ochat_icon"
+        android:textColor="@android:color/black"
+        android:textSize="10sp" />
+
+    <TextView
+        android:id="@+id/ochat_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/ochat_icon"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="35dp"
+        android:layout_toEndOf="@+id/ochat_icon"
+        android:layout_toRightOf="@+id/ochat_icon"
+        android:background="@drawable/otherchat"
+        android:maxEms="20"
+        android:padding="5dp"
+        android:textAllCaps="false"
+        android:textColor="@android:color/black"
+        android:textSize="10sp" />
+
+    <ImageView
+        android:id="@+id/ochat_icon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_margin="10dp" />
+
+    <TextView
+        android:id="@+id/mychat_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ochat_name"
+        android:layout_gravity="end"
+        android:layout_margin="15dp"
+        android:background="@drawable/mychat"
+        android:maxEms="20"
+        android:padding="5dp"
+        android:textColor="@android:color/black"
+        android:textSize="10sp" />
+</android.support.design.widget.CoordinatorLayout>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_profile"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/p_nick"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:textColor="@color/bright_blue"
+        android:textSize="18sp"
+        android:textStyle="normal|bold" />
+
+    <ImageView
+        android:id="@+id/p_back"
+        android:layout_width="match_parent"
+        android:layout_height="180dp" />
+
+
+    <ImageView
+        android:id="@+id/p_icon"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="130dp" />
+
+    <TextView
+        android:id="@+id/prof_favo1"
+        android:layout_width="60dp"
+        android:layout_height="25dp"
+        android:layout_gravity="center"
+        android:layout_marginRight="130dp"
+        android:layout_marginTop="80dp"
+        android:background="@android:color/transparent"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/prof_favo2"
+        android:layout_width="60dp"
+        android:layout_height="25dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="80dp"
+        android:background="@android:color/transparent"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/prof_favo3"
+        android:layout_width="60dp"
+        android:layout_height="25dp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="130dp"
+        android:layout_marginTop="80dp"
+        android:background="@android:color/transparent"
+        android:textAlignment="center" />
+
+    <ImageView
+        android:id="@+id/prof_joined"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="195dp" />
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_gravity="bottom"
+        android:paddingTop="35dp"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:id="@+id/prof_moimlist"
+            android:layout_width="1080dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom"
+            android:orientation="vertical"></LinearLayout>
+    </HorizontalScrollView>
+
+</android.support.design.widget.CoordinatorLayout>

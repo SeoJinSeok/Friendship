@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="35dp"
+    tools:context="com.friendship.Fragments.makemoim2">
+
+    <ImageButton
+        android:id="@+id/makemoim2_back"
+        android:layout_width="match_parent"
+        android:layout_height="200dp" />
+
+    <TextView
+        android:id="@+id/makemoim2_titlet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="37dp"
+        android:layout_marginTop="205dp"
+        android:textColor="@android:color/black"
+        android:textSize="10sp" />
+
+    <EditText
+        android:id="@+id/makemoim2_title"
+        android:layout_width="250dp"
+        android:layout_height="35dp"
+        android:layout_alignParentEnd="false"
+        android:layout_alignParentRight="false"
+        android:layout_gravity="center"
+        android:layout_marginBottom="77dp"
+        android:layout_marginLeft="130dp"
+        android:background="@android:color/transparent"
+        android:ems="10"
+        android:hint="모임 이름을 입력하세요"
+        android:inputType="textPersonName"
+        android:maxLength="20"
+        android:textSize="13sp" />
+
+    <ImageView
+        android:id="@+id/makemoim2_onecommimg"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="235dp" />
+
+    <TextView
+        android:id="@+id/makemoim2_onecommt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="37dp"
+        android:layout_marginTop="240dp"
+        android:textColor="@android:color/black"
+        android:textSize="10sp" />
+
+    <EditText
+        android:id="@+id/makemoim2_onecomm"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="7dp"
+        android:layout_marginLeft="30dp"
+        android:background="@android:color/transparent"
+        android:ems="10"
+        android:hint="한 줄 소개를 입력하세요"
+        android:inputType="textPersonName"
+        android:maxLength="20"
+        android:textSize="13sp" />
+
+    <ImageView
+        android:id="@+id/makemoim2_contentimg"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="280dp" />
+
+    <TextView
+        android:id="@+id/makemoim2_contentt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="37dp"
+        android:layout_marginTop="285dp"
+        android:textColor="@android:color/black"
+        android:textSize="10sp" />
+
+    <EditText
+        android:id="@+id/makemoim2_content"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:layout_marginTop="310dp"
+        android:background="@android:color/transparent"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:maxLength="200"
+        android:paddingBottom="125dp"
+        android:paddingLeft="10dp"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/makemoim2_hint"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="245dp"
+        android:maxLines="2"
+        android:textAlignment="center"
+        android:textSize="10sp" />
+
+    <ImageView
+        android:id="@+id/makemoim2_titleimg"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="200dp" />
+
+</android.support.design.widget.CoordinatorLayout>

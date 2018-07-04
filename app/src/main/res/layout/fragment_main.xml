@@ -1,0 +1,91 @@
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.friendship.Fragments.mainFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <android.support.design.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/mainf_toppage"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:scrollbars="none">
+
+            </android.support.v4.view.ViewPager>
+
+            <ImageView
+                android:id="@+id/mainf_sel1"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="70dp"
+                android:layout_marginRight="60dp" />
+
+            <ImageView
+                android:id="@+id/mainf_sel2"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="70dp" />
+
+            <ImageView
+                android:id="@+id/mainf_sel3"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="70dp"
+                android:layout_marginLeft="60dp" />
+
+            <ImageView
+                android:id="@+id/mainf_pretitle"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="330dp" />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginTop="380dp"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:id="@+id/mainf_premiumlist"
+                    android:layout_width="1080dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <ImageView
+                android:id="@+id/mainf_ititle"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="520dp" />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_gravity="bottom"
+                android:layout_marginTop="555dp"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:id="@+id/mainf_interestlist"
+                    android:layout_width="1080dp"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal" />
+            </HorizontalScrollView>
+
+        </android.support.design.widget.CoordinatorLayout>
+    </ScrollView>
+
+</android.support.design.widget.CoordinatorLayout>

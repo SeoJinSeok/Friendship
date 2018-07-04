@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_moim"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/moimf_joinimg"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/profile_moimlist" />
+
+    <LinearLayout
+        android:id="@+id/moimf_joinlist"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal" />
+
+    <ImageView
+        android:id="@+id/moimf_themeimg"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/profile_moimlist" />
+
+    <LinearLayout
+        android:id="@+id/moimf_themelist"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal" />
+
+    <ImageView
+        android:id="@+id/moimf_regimg"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/profile_moimlist" />
+
+    <LinearLayout
+        android:id="@+id/moimf_reglist"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal" />
+
+</LinearLayout>
