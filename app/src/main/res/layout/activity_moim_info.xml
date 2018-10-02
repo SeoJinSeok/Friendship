@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layout_moim_info"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.friendship.activities.MoimInfo">
+    android:layout_height="match_parent">
 
     <ImageView
         android:id="@+id/minfo_top"
@@ -39,21 +37,11 @@
         android:textSize="16sp" />
 
     <Button
-        android:id="@+id/minfo_alarm"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="315dp"
-        android:background="@drawable/main_side" />
-
-    <Button
         android:id="@+id/minfo_msetting"
         android:layout_width="70dp"
         android:layout_height="20dp"
         android:layout_marginLeft="280dp"
-        android:layout_marginTop="160dp"
+        android:layout_marginTop="180dp"
         android:background="@android:color/transparent"
         android:textStyle="bold" />
 

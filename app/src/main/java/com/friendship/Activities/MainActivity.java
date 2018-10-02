@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -193,10 +194,9 @@ public class MainActivity extends AppCompatActivity
 
 
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
+    public boolean onNavigationItemSelected(@NonNull  MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-
         if (id == R.id.ms_main) {
             FragT = getSupportFragmentManager().beginTransaction();
             FragT.replace(R.id.frag_place, mfrag);
@@ -215,7 +215,7 @@ public class MainActivity extends AppCompatActivity
             Intent contact = new Intent(this, Contact.class);
             startActivity(contact);
         } else if (id == R.id.ms_logout) {
-            oMgr = new ObjManager("logout.jsp");
+            oMgr = new ObjManager("login.jsp");
             oMgr.CheckorLogout();
             Intent Login = new Intent(this, LoginActivity.class);
             startActivity(Login);
@@ -229,9 +229,6 @@ public class MainActivity extends AppCompatActivity
 
     @SuppressWarnings("unused")
     public void onResult(Object obj) {
-        View load = findViewById(R.id.main_load);
-        load.setVisibility(View.GONE);
-        layout.setVisibility(View.VISIBLE);
         if (obj != null) {
             if (!profload) {
                 Object[] objs = (Object[]) obj;
@@ -245,6 +242,9 @@ public class MainActivity extends AppCompatActivity
                     oMgr = new ObjManager("main.jsp");
                     oMgr.GetMain(null, this);
                     profload = true;
+                    View load = findViewById(R.id.main_load);
+                    load.setVisibility(View.GONE);
+                    layout.setVisibility(View.VISIBLE);
                 }
             } else mfrag.setobj((MainObj) obj);
         }

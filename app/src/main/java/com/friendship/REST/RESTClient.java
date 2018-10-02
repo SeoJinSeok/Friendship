@@ -10,7 +10,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class RESTClient {
-    final private static String defaultURL = "http://192.168.219.112:8081/Friendship/";
+    final private static String defaultURL = "http://192.168.0.2:8081/Friendship/";
     private static RESTClient restclient = null;
     private String urlString = null;
     private HttpURLConnection conn = null;
@@ -45,8 +45,6 @@ public class RESTClient {
 
                 if (conn.getResponseCode() >= 200 && conn.getResponseCode() < 300) {
                     if (buf.toString().equals("")) return true;
-                    else if (urlString.contains("logout") || urlString.equals(defaultURL))
-                        return true;
                     else return buf.toString();
                 } else return false;
             }

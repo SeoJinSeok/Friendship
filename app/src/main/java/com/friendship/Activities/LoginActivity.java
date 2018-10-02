@@ -250,6 +250,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     public void onResult(Object ok) {
         showProgress(false);
+        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+        finish();
+        /*
         if ((boolean) ok) {
             startActivity(new Intent(getApplicationContext(), MainActivity.class));
             finish();
@@ -257,6 +260,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             mPasswordView.setError(getString(R.string.error_incorrect_password));
             mPasswordView.requestFocus();
         }
+        */
     }
 
     private void startTask(String ID, String password) {

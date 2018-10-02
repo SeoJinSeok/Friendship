@@ -23,13 +23,14 @@ import org.json.JSONObject;
 import java.io.ByteArrayOutputStream;
 import java.lang.reflect.Method;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 
 public class ObjManager {
     private RESTClient RClient;
     private AES256Util acoder;
     private boolean check = false;
     private String[] ProfParams = {"nick", "icon", "iconuri", "comm", "birth", "sex", "favos", "region", "join"},
-            MoimParams = {"title", "onecomm", "cont", "back", "limit", "regi", "cate", "agel", "ageh"};
+            MoimParams = {"title", "onecomm", "cont", "back", "limit", "regi", "cate", "agel", "ageh", "mem"};
     private Activity A = null;
 
     public ObjManager(String path) {
@@ -64,7 +65,7 @@ public class ObjManager {
         Thread thr = new Thread(new Runnable() {
             @Override
             public void run() {
-                check = (boolean) RClient.GET();
+                check = (RClient.GET() instanceof  String) || (boolean)RClient.GET();
             }
         });
         thr.start();
@@ -154,7 +155,7 @@ public class ObjManager {
                 Ms[i].setTitle(Jobj.getString(MoimParams[0]));
                 Ms[i].setComm(Jobj.getString(MoimParams[1]));
                 Ms[i].setBack(ByteToBitmap(Jobj.getString(MoimParams[3])));
-                Ms[i].setMem_num(Jobj.getInt("num"));
+                Ms[i].setMem_num(Ms[i].getMembers().size());
             }
             return Ms;
         } catch (Exception e) {
@@ -164,38 +165,39 @@ public class ObjManager {
 
     // 모임 멤버 불러오기
     @Nullable
-    private MoimObj.Member[] SetMember(String str) {
+    private ArrayList<MoimObj.Member> SetMember(String str) {
         try {
             JSONArray jarr = new JSONArray(str);
             int i = 0;
-            MoimObj.Member[] mem = new MoimObj.Member[jarr.length()];
+            ArrayList<MoimObj.Member> array = new ArrayList<>();
             while (!jarr.isNull(i)) {
                 JSONObject jobj = jarr.getJSONObject(i);
-                mem[i] = new MoimObj.Member();
-                mem[i].setMem_id(jobj.getString("id"));
-                mem[i].setMem_nick(jobj.getString("nick"));
-                mem[i].setMem_comm(jobj.getString("comm"));
-                mem[i].setMem_icon(ByteToBitmap(jobj.getString("icon")));
-                mem[i++].setMem_lev(jobj.getInt("lev"));
+                MoimObj.Member mem = new MoimObj.Member();
+                mem.setMem_id(jobj.getString("id"));
+                mem.setMem_nick(jobj.getString("nick"));
+                mem.setMem_comm(jobj.getString("comm"));
+                mem.setMem_icon(ByteToBitmap(jobj.getString("icon")));
+                mem.setMem_lev(jobj.getInt("lev"));
+                i++;
+                array.add(mem);
             }
-            return mem;
+            return array;
         } catch (JSONException e) {
             return null;
         }
     }
 
     // 모임 정보 불러오기
-    public MoimObj GetMoim(String res, MoimInfo m) {
+    public MoimObj GetMoim(String res, Activity m) {
         if (A == null) {
             A = m;
             runTask("GET", null, 3);
             return null;
         } else {
-            String[] MoimParams = {"title", "onecomm", "content", "back", "limit", "regi", "cate", "num", "mem"};
+            String[] MoimParams = {"title", "onecomm", "content", "back", "limit", "regi", "cate", "mem", "board", "isJoin"};
             MoimObj M = new MoimObj();
             try {
-                runTask("GET", null, 2);
-                JSONObject Jobj = new JSONObject(Decode(res, "Getting-moim-info"));
+                JSONObject Jobj = new JSONObject(res);
                 M.setTitle(Jobj.getString(MoimParams[0]));
                 M.setComm(Jobj.getString(MoimParams[1]));
                 M.setContent(Jobj.getString(MoimParams[2]));
@@ -203,25 +205,32 @@ public class ObjManager {
                 M.setLimit(Jobj.getInt(MoimParams[4]));
                 M.setReg(Jobj.getString(MoimParams[5]));
                 M.setCate(Jobj.getString(MoimParams[6]));
-                M.setMem_num(Jobj.getInt(MoimParams[7]));
-                M.setMembers(SetMember(Jobj.getString(MoimParams[8])));
+                M.setMembers(SetMember(Jobj.getString(MoimParams[7])));
+                M.setMem_num(M.getMembers().size());
+
+                // 게시판
+                if (Jobj.getString(MoimParams[8]) != null) {
+                    JSONArray Jarr = new JSONArray((Jobj.getString(MoimParams[8])));
+                    BoardObj[] board = new BoardObj[Jarr.length()];
+                    for (int i = 0; i < board.length; i++) {
+                        JSONObject j = Jarr.getJSONObject(i);
+                        board[i].setB_Title(j.getString("title"));
+                        board[i].setB_Content(j.getString("content"));
+                        board[i].setB_Writer(j.getString("writer"));
+                        board[i].setWdate(j.getString("wtime"));
+                    }
+                    M.setBoard(board);
+                }
+
+                // 모임장, 가입 여부
+                for (MoimObj.Member i : M.getMembers()) {
+                    if (i.getMem_id().equals(RClient.getID()) && i.getMem_lev() == 1)   M.cap = true;
+                }
+                M.isJoin = Jobj.getBoolean("isJoin");
                 return M;
             } catch (Exception e) {
                 return null;
             }
-        }
-    }
-
-    // 모임 가입
-    public void JQMoim(String memid) {
-        try {
-            JSONObject jobj = new JSONObject();
-            jobj.put("id", memid);
-            jobj.put("lev", 3);
-            jobj.put("join", 1);
-            runTask("GET", Encode(jobj.toString(), 1, "join-or-quit-moim"), -1);
-        } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 
@@ -423,8 +432,7 @@ public class ObjManager {
                 }
                 Class c = A.getClass();
                 Method mlist [] = c.getDeclaredMethods();
-                for (int i=0; i<mlist.length; i++) {
-                    Method m = mlist[i];
+                for (Method m : mlist){
                     if (m.getName().equals("onResult")) m.invoke(A, result);
                 }
             } catch (Exception e) {

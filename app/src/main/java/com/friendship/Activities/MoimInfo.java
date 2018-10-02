@@ -9,35 +9,34 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.friendship.R;
-import com.friendship.Fragments.AlarmSetting;
 import com.friendship.Fragments.imoim_album;
 import com.friendship.Fragments.imoim_chat;
 import com.friendship.Fragments.imoim_main;
 import com.friendship.Fragments.imoim_mem;
-import com.friendship.Objects.BoardObj;
 import com.friendship.Objects.MoimObj;
-import com.friendship.Objects.ProfileObj;
 import com.friendship.REST.ObjManager;
+import com.friendship.REST.RESTClient;
 
-public class MoimInfo extends AppCompatActivity implements View.OnClickListener {
+import java.io.Serializable;
+
+public class MoimInfo extends AppCompatActivity implements View.OnClickListener, Serializable {
     private int BB = Color.rgb(0, 144, 255);
     private MoimObj mObj = null;
-    private BoardObj[] bObj = null;
     private TextView title1, title2, content, main, chat, album, mem, sel, msetting;
     private int mid;
-    private boolean mymoim;
     private View layout = null;
     private FragmentTransaction ft;
     private imoim_main ifrag;
     private imoim_chat cfrag;
     private imoim_album pfrag;
     private imoim_mem mfrag;
-    private AlarmSetting alarm;
     private Fragment cur;
     private View mylayout, bg, top;
     private ObjManager oMgr;
@@ -51,21 +50,6 @@ public class MoimInfo extends AppCompatActivity implements View.OnClickListener 
         Intent parent = getIntent();
         mid = parent.getIntExtra("mid", 0);
 
-        // 모임 가입 여부 확인
-        Thread thr = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                ObjManager oMgr = new ObjManager("isJoin.jsp?mid=" + mid);
-                mymoim = oMgr.CheckorLogout();
-            }
-        });
-        thr.start();
-        try {
-            thr.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
         Button back = findViewById(R.id.minfo_back);
         back.setOnClickListener(this);
         bg = findViewById(R.id.minfo_backimg);
@@ -74,10 +58,12 @@ public class MoimInfo extends AppCompatActivity implements View.OnClickListener 
         top = findViewById(R.id.minfo_top);
 
         // 내 모임 정보
-        if (mymoim) {
-            msetting = (Button) findViewById(R.id.minfo_msetting);
-            msetting.setText("모임 설정");
-            msetting.setOnClickListener(this);
+        if (mObj.isJoin) {
+            if (mObj.cap) {
+                msetting = (Button) findViewById(R.id.minfo_msetting);
+                msetting.setText("모임 설정");
+                msetting.setOnClickListener(this);
+            }
             mylayout = findViewById(R.id.minfo_mymoim);
             mylayout.setPadding(0, 300, 0, 0);
             View menu = findViewById(R.id.minfo_menu);
@@ -104,8 +90,10 @@ public class MoimInfo extends AppCompatActivity implements View.OnClickListener 
             cfrag = new imoim_chat();
             pfrag = new imoim_album();
             mfrag = new imoim_mem();
-            alarm = new AlarmSetting();
             cur = ifrag;
+            ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.minfo_frag, cur);
+            ft.commit();
         }
         // 다른 모임 정보
         else {
@@ -128,6 +116,33 @@ public class MoimInfo extends AppCompatActivity implements View.OnClickListener 
             alarm.show();
         }
         startTask(0);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.moim_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()){
+            case R.id.moim_alarm:
+            case R.id.moim_out:
+                AlertDialog.Builder confirm = new AlertDialog.Builder(MoimInfo.this);
+                confirm.setTitle("하선");
+                confirm.setMessage("하선 하시겠습니까?");
+                confirm.setPositiveButton("네", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        ObjManager o = new ObjManager("moim.jsp?jq=0");
+                        o.CheckorLogout();
+                    }
+                });
+                confirm.setNegativeButton("아니오", null);
+                confirm.show();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -175,20 +190,14 @@ public class MoimInfo extends AppCompatActivity implements View.OnClickListener 
                 sel = mem;
                 cur = mfrag;
                 break;
-            case R.id.minfo_alarm:
-                bg.setBackground(null);
-                mylayout.setPadding(0, 0, 0, 0);
-                cur = alarm;
-                break;
             case R.id.minfo_msetting:
                 Intent moim = new Intent(this, Moim.class);
                 moim.putExtra("new", false);
-                moim.putExtra("mobj", mObj);
                 startActivity(moim);
                 break;
             case R.id.minfo_join:
                 startTask(1);
-                break;
+                return ;
             default:
                 break;
         }
@@ -199,34 +208,25 @@ public class MoimInfo extends AppCompatActivity implements View.OnClickListener 
 
     @SuppressWarnings("unused")
     public void onResult(Object res) {
+        // 모임 객체 불러오기
         if (mObj == null) {
             mObj = (MoimObj) res;
-            oMgr = new ObjManager("notice?mid=" + String.valueOf(mid));
-            oMgr.GetBoard(null, this);
-        } else if (bObj == null) {
-            oMgr = new ObjManager("is");
+            oMgr = new ObjManager("");
             if (oMgr.CheckorLogout()) {
                 bg.setBackground(new BitmapDrawable(getResources(), mObj.getBack()));
                 title2.setText(mObj.getTitle());
-                if (!mymoim) {
+                if (mObj.isJoin) {
                     title1.setText(mObj.getTitle());
                     content.setText(mObj.getContent());
                 } else {
-                    bObj = (BoardObj[]) res;
-                    if (bObj == null) bObj = new BoardObj[0];
-                    alarm.setObj(mObj.getCap(), mid);
-                    ifrag.setObj(bObj);
-                    mfrag.setobj(mObj.getMembers());
+                    if (mObj.getBoard() != null) ifrag.setObj(mObj.getBoard());
+                    for (MoimObj.Member m : mObj.getMembers()){
+
+                        //if (RESTClient.getInstance("").getID().equals(m.getMem_id()))
+                    }
+                    mfrag.setobj(mObj.getMembers(), mid);
                 }
             }
-            oMgr = new ObjManager("account");
-            oMgr.GetProf(null, this);
-        } else {
-            ProfileObj p = (ProfileObj) ((Object[]) res)[0];
-            //cfrag.setObj(p, mid);
-            ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.minfo_frag, ifrag);
-            ft.commit();
             layout.setVisibility(View.VISIBLE);
         }
     }
@@ -238,8 +238,21 @@ public class MoimInfo extends AppCompatActivity implements View.OnClickListener 
                 oMgr.GetMoim(null, this);
                 break;
             case 1:
-                oMgr = new ObjManager("moim.jsp?mid="+ mid + "&jqid=" + 1);
-                oMgr.JQMoim(null);
+                oMgr = new ObjManager("moim.jsp?mid="+ mid + "&jq=" + 1);
+                if (oMgr.CheckorLogout()){
+                    AlertDialog.Builder alert = new AlertDialog.Builder(this);
+                    alert.setMessage("가입이 완료되었습니다.");
+                    alert.setOnCancelListener(new DialogInterface.OnCancelListener() {
+                        @Override
+                        public void onCancel(DialogInterface dialogInterface) {
+                            Intent intent = new Intent(MoimInfo.this, MoimInfo.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                            startActivity(intent);
+                            finish();
+                        }
+                    });
+                    alert.show();
+                }
                 break;
         }
     }

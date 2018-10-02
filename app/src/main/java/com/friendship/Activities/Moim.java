@@ -19,10 +19,6 @@ import com.friendship.Fragments.makemoim2;
 import com.friendship.Objects.MoimObj;
 import com.friendship.REST.ObjManager;
 
-import org.json.JSONObject;
-
-import java.io.FileOutputStream;
-
 public class Moim extends AppCompatActivity implements View.OnClickListener {
     private Fragment Frag;
     private ImageButton getback;
@@ -78,10 +74,8 @@ public class Moim extends AppCompatActivity implements View.OnClickListener {
         m2 = new makemoim2();
         if (isNew) toptitle.setText("모임만들기");
         else {
-            mObj = (MoimObj) getIntent().getSerializableExtra("mobj");
             toptitle.setText("모임수정");
-            m1.getObj(mObj);
-            m2.getObj(mObj);
+            startTask(1);
         }
         Frag = m1;
         FragT = getSupportFragmentManager().beginTransaction();
@@ -147,8 +141,7 @@ public class Moim extends AppCompatActivity implements View.OnClickListener {
             mObj.setTitle((String) objs[1]);
             mObj.setComm((String) objs[2]);
             mObj.setContent((String) objs[3]);
-            if (isNew) mObj.setCap(true);
-            startTask(isNew);
+            startTask(0);
         }
     }
 
@@ -169,11 +162,13 @@ public class Moim extends AppCompatActivity implements View.OnClickListener {
     }
 
     public void onResult(Object obj) {
-        if (!(boolean)obj){
-            falarm.setMessage("오류가 발생했습니다.");
-            falarm.show();
-            return ;
+        if (obj instanceof MoimObj){
+            mObj = (MoimObj) obj;
+            m1.getObj(mObj);
+            m2.getObj(mObj);
+            return;
         }
+
         if (obj != null) {
             falarm.setOnCancelListener(new DialogInterface.OnCancelListener() {
                 @Override
@@ -182,32 +177,25 @@ public class Moim extends AppCompatActivity implements View.OnClickListener {
                     finish();
                 }
             });
-            if (isNew) {
-                falarm.setMessage("모임이 생성되었습니다.");
-                try {
-                    FileOutputStream alarm = new FileOutputStream("alarm.txt");
-                    JSONObject jobj = new JSONObject();
-                    jobj.put("notice", true);
-                    jobj.put("chat", true);
-                    jobj.put("album", true);
-                    jobj.put("member", true);
-                    alarm.write(jobj.toString().getBytes());
-                    alarm.close();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            } else falarm.setMessage("수정이 완료되었습니다.");
+            if (isNew)  falarm.setMessage("모임이 생성되었습니다.");
+            else falarm.setMessage("수정이 완료되었습니다.");
             falarm.show();
         } else {
-            falarm.setMessage("오류가 발생했습니다.");
+            falarm.setMessage("빈 곳을 채워주세요.");
             falarm.show();
         }
     }
 
-    private void startTask(boolean isNew) {
+    private void startTask(int id) {
         ObjManager oMgr;
-        if (isNew) oMgr = new ObjManager("moim.jsp");
-        else oMgr = new ObjManager("moim.jsp?mid=" + mObj.getId());
-        oMgr.SetMoim(mObj, this);
+        switch (id){
+            case 0:
+                oMgr = (isNew) ? new ObjManager("moim.jsp") : new ObjManager("moim.jsp?mid=" + mObj.getId());
+                oMgr.SetMoim(mObj, this);
+            case 1:
+                oMgr = new ObjManager("moim.jsp?mid=" + mObj.getId());
+                oMgr.GetMoim(null, this);
+        }
+
     }
 }

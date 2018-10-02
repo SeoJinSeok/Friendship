@@ -3,22 +3,16 @@ package com.friendship.Objects;
 import android.graphics.Bitmap;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
-public class MoimObj implements Serializable {
-    private boolean isJoin;  // 모임장 여부
+public class MoimObj implements Serializable{
+    public boolean isJoin = false, cap = false;  // 모임장 여부
     private String cate, title, comm, content, reg;   // 모임 카테고리, 제목, 한 줄 소개, 내용, 지역
     private Bitmap back;  // 모임 아이콘, 배경
     private int id, limit, agel, ageh;    //  모임 id, 인원, 나이 제한
     private int mem_num, attend;    // 출석 수
-    private Member[] members;
-
-    public boolean getCap() {
-        return isJoin;
-    }
-
-    public void setCap(boolean isJoin) {
-        this.isJoin = isJoin;
-    }
+    private ArrayList<Member> members;   // 가입 한 멤버
+    private BoardObj [] board = null;
 
     public String getCate() {
         return cate;
@@ -116,13 +110,15 @@ public class MoimObj implements Serializable {
         this.mem_num = mem_num;
     }
 
-    public Member[] getMembers() {
+    public ArrayList<Member> getMembers() {
         return members;
     }
 
-    public void setMembers(Member[] members) {
-        this.members = members;
-    }
+    public void setMembers(ArrayList<Member> members) { this.members = members; }
+
+    public BoardObj [] getBoard() { return board; }
+
+    public void setBoard(BoardObj [] board) { this.board = board; }
 
     public static class Member {
         private String mem_id, mem_nick, mem_comm;

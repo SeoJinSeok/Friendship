@@ -1,5 +1,6 @@
 package com.friendship.Fragments;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -20,6 +21,7 @@ import com.friendship.Activities.MoimInfo;
 import com.friendship.Objects.MoimObj;
 import com.friendship.Objects.ProfileObj;
 import com.friendship.Objects.RoundImage;
+import com.friendship.REST.ObjManager;
 
 public class profileFragment extends Fragment implements View.OnClickListener {
     private TextView nick, favs[];
@@ -45,6 +47,16 @@ public class profileFragment extends Fragment implements View.OnClickListener {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        if (getArguments() != null){
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    ObjManager o = new ObjManager("profile.jsp?id=" + getArguments().getString("id"));
+                    Object [] objs = o.GetProf(null, new Activity());
+                    setobj((ProfileObj)objs[0], (MoimObj[])objs[1]);
+                }
+            }).run();
+        }
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
         View back = view.findViewById(R.id.p_back);
         back.setBackgroundResource(R.drawable.prof_back);

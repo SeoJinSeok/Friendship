@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.PagerAdapter;
@@ -23,8 +24,9 @@ import com.friendship.Activities.MoimInfo;
 import com.friendship.Objects.MainObj;
 
 public class mainFragment extends Fragment implements View.OnClickListener {
-    private final CoordinatorLayout.LayoutParams ilayout = new CoordinatorLayout.LayoutParams(CoordinatorLayout.LayoutParams.MATCH_PARENT, CoordinatorLayout.LayoutParams.MATCH_PARENT);
+    private final CoordinatorLayout.LayoutParams blayout = new CoordinatorLayout.LayoutParams(CoordinatorLayout.LayoutParams.MATCH_PARENT, CoordinatorLayout.LayoutParams.MATCH_PARENT);
     private final CoordinatorLayout.LayoutParams tlayout = new CoordinatorLayout.LayoutParams(CoordinatorLayout.LayoutParams.WRAP_CONTENT, CoordinatorLayout.LayoutParams.WRAP_CONTENT);
+    private final CoordinatorLayout.LayoutParams ilayout = new CoordinatorLayout.LayoutParams(CoordinatorLayout.LayoutParams.WRAP_CONTENT, CoordinatorLayout.LayoutParams.WRAP_CONTENT);
     private MainObj M = null;
     private LinearLayout premium, interest;
     private ViewPager toppage;
@@ -75,7 +77,7 @@ public class mainFragment extends Fragment implements View.OnClickListener {
             // Image 설정
             img[i] = new ImageView(con);
             img[i].setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 160));
-            img[i].setImageBitmap(imgs[i]);
+            img[i].setBackground(new BitmapDrawable(con.getResources(), imgs[i]));
 
             // 제목, 한줄 소개 설정
             title[i] = new TextView(con);
@@ -134,7 +136,7 @@ public class mainFragment extends Fragment implements View.OnClickListener {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         con = getContext().getApplicationContext();
         con.setTheme(R.style.AppTheme);
@@ -190,17 +192,18 @@ public class mainFragment extends Fragment implements View.OnClickListener {
         }
 
         @Override
-        public Object instantiateItem(ViewGroup container, int position) {
+        @NonNull
+        public Object instantiateItem(@NonNull ViewGroup container, int position) {
             // Layout 설정
             CoordinatorLayout layout = new CoordinatorLayout(con);
 
             // 배경화면 설정
             ImageView img = new ImageView(con);
-            img.setLayoutParams(ilayout);
+            img.setLayoutParams(blayout);
             img.setBackground(new BitmapDrawable(con.getResources(), M.getImgs()[position]));
 
             // 제목 설정
-            tlayout.setMargins(30, 0, 0, 38);
+            tlayout.setMargins(28, 0, 0, 70);
             tlayout.gravity = Gravity.BOTTOM | Gravity.START;
             TextView title = new TextView(con);
             title.setText(M.getTitles()[position]);
@@ -209,12 +212,13 @@ public class mainFragment extends Fragment implements View.OnClickListener {
             title.setLayoutParams(tlayout);
 
             // 한줄 소개 설정
-            tlayout.setMargins(30, 0, 0, 75);
+            ilayout.setMargins(30, 0, 0, 20);
+            ilayout.gravity = Gravity.BOTTOM | Gravity.START;
             TextView intro = new TextView(con);
             intro.setText(M.getIntros()[position]);
             intro.setTextSize(16);
             intro.setTextColor(Color.WHITE);
-            intro.setLayoutParams(tlayout);
+            intro.setLayoutParams(ilayout);
 
             // Layout에 추가하고 adapterView에 붙인다.
             layout.setId(M.getIds()[position]);
@@ -227,12 +231,12 @@ public class mainFragment extends Fragment implements View.OnClickListener {
         }
 
         @Override
-        public void destroyItem(ViewGroup container, int position, Object object) {
+        public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
             container.removeView((View) object);
         }
 
         @Override
-        public boolean isViewFromObject(View view, Object object) {
+        public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
             return view == object;
         }
 

@@ -7,7 +7,7 @@
     <ProgressBar
         android:id="@+id/settings_progress"
         style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="top|center"
         android:layout_marginTop="30dp" />
@@ -16,6 +16,24 @@
         android:id="@+id/layout_profilesettings"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/settings_back"
+            android:layout_width="40dp"
+            android:layout_height="35dp" />
+
+        <ImageView
+            android:id="@+id/settings_top"
+            android:layout_width="match_parent"
+            android:layout_height="80dp" />
+
+        <ImageButton
+            android:id="@+id/settings_icon"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="top|center"
+            android:layout_marginTop="90dp"
+            android:foreground="@drawable/profcircle" />
 
         <Button
             android:id="@+id/settings_region"
@@ -28,14 +46,6 @@
             android:minHeight="0dp"
             android:minWidth="0dp"
             android:textSize="12sp" />
-
-        <Button
-            android:id="@+id/settings_finish"
-            android:layout_width="115dp"
-            android:layout_height="21dp"
-            android:layout_gravity="bottom|center"
-            android:layout_marginBottom="24dp"
-            android:background="@android:color/transparent" />
 
         <EditText
             android:id="@+id/settings_comment"
@@ -50,19 +60,6 @@
             android:inputType="text"
             android:maxLength="20"
             android:textSize="12sp" />
-
-        <ImageView
-            android:id="@+id/settings_top"
-            android:layout_width="match_parent"
-            android:layout_height="80dp" />
-
-        <ImageButton
-            android:id="@+id/settings_icon"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_gravity="top|center"
-            android:layout_marginTop="90dp"
-            android:foreground="@drawable/profcircle" />
 
         <Button
             android:id="@+id/settings_woman"
@@ -159,11 +156,6 @@
             android:textColor="@android:color/black"
             android:textSize="12sp" />
 
-        <Button
-            android:id="@+id/settings_back"
-            android:layout_width="40dp"
-            android:layout_height="35dp" />
-
         <EditText
             android:id="@+id/settings_year"
             android:layout_width="95dp"
@@ -212,6 +204,14 @@
             android:minLines="1"
             android:textColor="@color/bright_blue"
             android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/settings_finish"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center"
+            android:layout_marginBottom="24dp"
+            android:background="@android:color/transparent" />
     </android.support.design.widget.CoordinatorLayout>
 
 </android.support.design.widget.CoordinatorLayout>

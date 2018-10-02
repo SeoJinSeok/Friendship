@@ -76,7 +76,7 @@ public class ListViewAdapter extends BaseAdapter {
         // 상대방
         if (id == 0) item = new ChatObj(icon, nick, msg);
 
-            // 내꺼
+        // 내꺼
         else item = new ChatObj(null, null, msg);
         chatList.add(item);
     }
